@@ -506,6 +506,9 @@ def readGen1(ref,refLen,readLen,genos,inter,mx1,insD1,delD1,gQ,bQ,iQ,qual):
 
 def readGenp(inter, ref, refLen, readLen1, readLen2, genos, mx1, insD1, delD1, gQ, bQ, iQ, qual):
 	"""Generates a pair of reads from given DNA fragment."""
+	### insertion size is following a poisson distribution with a average of isize
+	isize = infer
+	inter=numpy.random.poisson(isize)
 	cRef = comp(ref)
 	if inter < refLen:
 		st_in = refLen-inter+1
